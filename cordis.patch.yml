@@ -1,0 +1,16 @@
+# dsh-renor: one row that connects DSH to the hosted Renor MCP server.
+#
+# Auth: DSH's MCP client (@deepseek-ai/dsh-mcp-client) has no OAuth option, only
+# static headers. So the Renor API key is read from the RENOR_API_KEY environment
+# variable of the process that runs dsh. The key is not stored in this file.
+# With no key set, no Authorization header is sent and Renor answers 401: its
+# tools do not appear and an error is logged; DSH itself still starts.
+- insert:
+    - id: renor
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: renor
+        transport: streamable-http
+        url: https://mcp.renor.cloud/mcp
+        headers:
+          Authorization: !!js "process.env.RENOR_API_KEY ? `Bearer ${process.env.RENOR_API_KEY}` : ''"

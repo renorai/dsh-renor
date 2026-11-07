@@ -1,0 +1,40 @@
+{
+  "name": "dsh-renor",
+  "version": "0.1.0",
+  "description": "Connects DeepSeek Harness to the hosted Renor memory MCP server (https://mcp.renor.cloud/mcp) with a Renor API key.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/patch.test.js"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "memory",
+    "mcp",
+    "renor"
+  ],
+  "author": "Renor",
+  "homepage": "https://renor.cloud",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renorai/dsh-renor.git"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.2-rc.1"
+  },
+  "devDependencies": {
+    "yaml": "2.9.1"
+  }
+}
